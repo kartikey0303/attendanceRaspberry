@@ -16,6 +16,10 @@ gc = gspread.authorize(credentials)
 
 wks = gc.open(GDOCS_SPREADSHEET_NAME).sheet1
 
-value = wks.acell('A2').value
-print value
+name  = [item for item in wks.col_values(1) if item]
+
+for item in name:
+    print item
+#value = wks.acell('A2').value
+#print value
 
