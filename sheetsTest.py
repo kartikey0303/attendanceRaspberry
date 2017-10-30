@@ -16,6 +16,6 @@ gc = gspread.authorize(credentials)
 
 wks = gc.open(GDOCS_SPREADSHEET_NAME).sheet1
 
-value = wks.acell('B1').value
+value = wks.acell('A2').value
 print value
 
