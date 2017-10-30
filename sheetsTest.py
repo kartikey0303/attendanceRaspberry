@@ -4,16 +4,18 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 def searchRFID(name, wks):
     '''returns the RFID of the person whose name is given'''
-    print wks.row_count
     for k in range(2, wks.row_count):
         row = wks.row_values(k)[0:3]
         if row[0] == name:
             return row[2]
 
 
-def searchName(rfid):
+def searchName(rfid, wks):
     '''returns the name of person whose RFID is given'''
-
+    for k in range(2, wks.row_count):
+        row = wks.row_values(k)[0:3]
+        if row[2] == rfid:
+            return row[0]
 
 GDOCS_OAUTH_JSON = 'raspberryTest.json'
 
@@ -34,7 +36,9 @@ for item in name:
     print item
 
 RFID = searchRFID("Kartikey", wks)
+Name = searchName("test", wks)
 print RFID
+print Name
 #value = wks.acell('A2').value
 #print value
 
